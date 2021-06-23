@@ -17,12 +17,6 @@ function Contact({ banner, setLoc }) {
     { name: "", email: "", message: "" },
   ]);
 
-  const [open, setOpen] = React.useState(false);
-
-  const handleClick = () => {
-    setOpen(true);
-  };
-
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -40,7 +34,7 @@ function Contact({ banner, setLoc }) {
         setSubmit(true);
       })
       .catch((error) => {
-        alert(error.message);
+        setError(true);
       });
 
     resetForm();
@@ -195,6 +189,16 @@ function Contact({ banner, setLoc }) {
             >
               <Alert onClose={handleClose} severity="success">
                 You have successfully submitted the form
+              </Alert>
+            </Snackbar>
+            <Snackbar
+              anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+              open={error}
+              autoHideDuration={6000}
+              onClose={handleClose}
+            >
+              <Alert onClose={handleClose} severity="error">
+                The form could not be submitted. Retry after some time
               </Alert>
             </Snackbar>
           </div>
