@@ -26,8 +26,8 @@
 
 <br/>
 <p align="center">
-  <a href="https://github.com/RexTitanium/TitaniumArts.git">
-    <img src="public/assets/images/site.png" alt="Site" width="800" height="400">
+  <a href="https://github.com/RexTitanium/Titanium-Arts.git">
+    <img src="public/assets/images/site.png" alt="Site" width="100%" height="100%">
   </a>
 </p>
 <br/>
@@ -35,18 +35,7 @@ Titanium Arts
 
 ## Description
 
-The site is a replica of the original [Netflix](https://www.netflix.com) Website. It shows the list of genres such as:
-
-- Netflix Originals
-- Trending Now
-- Top Rated
-- Action Movies, etc.
-
-Each genre has a specific row and contains different cards with image titles
-
-The site does a GET request using [axios](https://www.npmjs.com/package/axios) and fetches data. The fetched data is then passed as props to individual components and the components are rendered.
-
-The application does not use a basic CSS styling. The elements were styled with SASS / SCSS. You will need [node-sass](https://www.npmjs.com/package/node-sass) for implementing SCSS files in your React App.
+The site Titanium Arts is a personal project site developed in order to display my Digital Creative Artwork. I needed a platform for both my web dev skills and my art ideas. So with the help of ReactJs I have successfully created so. Firebase helps me collect form data from users who want to connect to me. I intend to halt the development of the site as of now, but would definitely intend to work on this site in the future with much more features.
 
 ## Built With
 
