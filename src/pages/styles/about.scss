@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+.header-text {
+  h1 {
+    color: white;
+  }
+}
+
+.about {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  margin-top: 50px;
+  gap: 20px;
+  h1 {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-family: "Open Sans";
+    font-size: 5vh;
+    animation: fade 3s ease;
+  }
+  p {
+    color: rgb(173, 173, 173);
+
+    overflow: hidden;
+  }
+  .personal-info,
+  .site-info {
+    width: 50%;
+    background-color: #141414;
+    padding: 20px;
+    border-radius: 5px;
+  }
+}
+
+.paper1 {
+  border-top: 2px solid white;
+  width: 100% !important;
+  background-color: rgb(48, 48, 48) !important;
+
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+  animation: width-change 2s ease;
+  transition: 2s ease;
+  border-radius: 0px 0px 5px 5px;
+  overflow: hidden;
+}
+.paper2 {
+  border-top: 2px solid white;
+  width: 100% !important;
+  background-color: rgb(48, 48, 48) !important;
+
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+  animation: width-change2 2s ease;
+
+  border-radius: 0px 0px 5px 5px;
+  overflow: hidden;
+}
+
+@keyframes width-change {
+  from {
+    padding-top: 0px;
+    height: 0px;
+  }
+
+  to {
+    height: 66%;
+  }
+}
+
+@keyframes width-change2 {
+  from {
+    padding-top: 0px;
+    height: 0px;
+  }
+
+  to {
+    height: 82%;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .about {
+    flex-direction: column;
+    .personal-info,
+    .site-info {
+      width: 100%;
+    }
+  }
+}

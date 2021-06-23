@@ -1,0 +1,291 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+.form-header {
+  padding: 50px;
+  text-align: center;
+}
+
+.form-header {
+  font-family: poppins;
+  h1 {
+    font-size: 50px;
+    color: white;
+    border-bottom: 2px solid rgb(255, 255, 255);
+  }
+  p {
+    color: beige;
+  }
+}
+
+.mail-link {
+  text-decoration: none;
+  color: rgb(145, 152, 255);
+  &:hover {
+    color: rgb(229, 202, 255);
+    transition: all 0.5s ease;
+  }
+}
+.contact-us-header {
+  height: 400px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  opacity: 1;
+  transition: all 0.4s ease;
+  img {
+    width: 100%;
+    &:hover {
+      opacity: 0.8;
+      transition: all 0.4s ease;
+    }
+  }
+}
+.form-group {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.group {
+  position: relative;
+  margin-bottom: 45px;
+  width: 100%;
+  background-color: transparent;
+}
+input {
+  font-family: "Poppins";
+  font-size: 18px;
+  color: rgb(255, 255, 255);
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #757575;
+  background-color: transparent;
+  opacity: 1;
+}
+input:focus {
+  outline: none;
+}
+
+/* LABEL ======================================= */
+.group label {
+  font-family: "Poppins";
+  color: #999;
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 20px;
+  top: 10px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label,
+input:valid ~ label {
+  top: -25px;
+  left: 0;
+  font-family: "Poppins";
+  font-size: 14px;
+  color: #67f5ff;
+}
+
+/* BOTTOM BARS ================================= */
+.bar {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.bar:before,
+.bar:after {
+  content: "";
+  height: 2px;
+  width: 0%;
+  bottom: 1px;
+  position: absolute;
+  background: linear-gradient(to right, rgb(122, 255, 215), rgb(0, 89, 255));
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+input:focus ~ .bar:before,
+input:focus ~ .bar:after {
+  width: 100%;
+}
+
+/* active state */
+
+@media screen and (max-width: 700px) {
+  .form-group {
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .contact-form {
+    padding: 20px;
+    border-radius: 10px;
+
+    justify-content: center;
+  }
+
+  .contact-us-header {
+    height: 200px;
+    img {
+      width: 100%;
+    }
+  }
+  .buttons {
+    justify-content: center;
+  }
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation: inputHighlighter 0.3s ease;
+  -moz-animation: inputHighlighter 0.3s ease;
+  animation: inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from {
+    background: transparent;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+@-moz-keyframes inputHighlighter {
+  from {
+    background: transparent;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+@keyframes inputHighlighter {
+  from {
+    background: transparent;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+
+button.animated-button.send {
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  position: relative;
+  border: 2px solid #00ccff;
+  font-family: "Poppins";
+  z-index: 1;
+  border-radius: 10px;
+  padding: 10px 50px;
+  margin-bottom: 20px;
+  transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+}
+button.animated-button.send:hover {
+  color: rgb(0, 0, 0) !important;
+  background: transparent;
+
+  text-shadow: nthree;
+  animation: shadowlr 1s infinite;
+  transition: all 0.5s ease;
+}
+button.animated-button.send:hover::before {
+  left: 0%;
+  right: auto;
+  width: 100%;
+}
+button.animated-button.send::before {
+  border-radius: 8px;
+  display: block;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 100%;
+  width: 0px;
+  z-index: -1;
+  content: "";
+  color: #000 !important;
+  background: linear-gradient(to right, rgb(205, 225, 255), rgb(164, 196, 255));
+  transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+@keyframes shadowlr {
+  0%,
+  100% {
+    box-shadow: -5px 5px 1px rgb(119, 119, 119);
+  }
+  50% {
+    box-shadow: 5px 5px 1px rgb(117, 117, 117);
+  }
+}
+
+button.animated-button.clear {
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  position: relative;
+  border: 2px solid #ffc670;
+  font-family: "Poppins";
+  z-index: 1;
+  border-radius: 10px;
+  padding: 10px 50px;
+  margin-bottom: 20px;
+  transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+button.animated-button.clear:hover {
+  color: rgb(0, 0, 0) !important;
+  z-index: 1;
+  animation: shadowlr 1s infinite;
+  transition: all 0.5s ease;
+}
+.clear:hover::before {
+  left: 0%;
+  right: auto;
+  width: 100%;
+}
+.clear::before {
+  border-radius: 8px;
+  display: block;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 100%;
+  width: 0px;
+  content: "";
+  color: #000 !important;
+  z-index: -1;
+  background: linear-gradient(to right, rgb(255, 185, 81), rgb(255, 83, 60));
+  transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}

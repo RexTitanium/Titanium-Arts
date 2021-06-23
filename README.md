@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+<details open="open">
+  <h1>Table of Contents</h1>
+  <ol>
+    <li>
+      <a href="#description">Description</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# You can check the site at:
 
-## Available Scripts
+## [Titanium Arts](https://titaniumarts.web.app)
 
-In the project directory, you can run:
+# Project Title
 
-### `npm start`
+<br/>
+<p align="center">
+  <a href="https://github.com/RexTitanium/TitaniumArts.git">
+    <img src="public/assets/images/site.png" alt="Site" width="800" height="400">
+  </a>
+</p>
+<br/>
+Titanium Arts
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Description
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The site is a replica of the original [Netflix](https://www.netflix.com) Website. It shows the list of genres such as:
 
-### `npm test`
+- Netflix Originals
+- Trending Now
+- Top Rated
+- Action Movies, etc.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Each genre has a specific row and contains different cards with image titles
 
-### `npm run build`
+The site does a GET request using [axios](https://www.npmjs.com/package/axios) and fetches data. The fetched data is then passed as props to individual components and the components are rendered.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The application does not use a basic CSS styling. The elements were styled with SASS / SCSS. You will need [node-sass](https://www.npmjs.com/package/node-sass) for implementing SCSS files in your React App.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Built With
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [ReactJS](https://reactjs.org/)
+- [Firebase](https://firebase.google.com/)
 
-### `npm run eject`
+## Getting Started
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+First Clone the repository. Install npm modules and start the application
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Prerequisites:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Node
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Installation
 
-## Learn More
+- Clone the repository
+  ```sh
+  git clone https://github.com/RexTitanium/Kudos-project.git
+  ```
+- Install npm packages
+  ```sh
+  npm install
+  ```
+- Initialize the site
+  ```sh
+  npm start
+  ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contact
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Email : s4samyak@gmail.com

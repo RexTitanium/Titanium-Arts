@@ -1,0 +1,193 @@
+@import url("https://fonts.googleapis.com/css?family=Mukta:700");
+@import url("https://fonts.googleapis.com/css?family=Jost");
+
+$bg: #000000;
+$white: rgb(0, 0, 0);
+$black: #8ad4ff;
+
+@mixin transition(
+  $property: all,
+  $duration: 0.45s,
+  $ease: cubic-bezier(0.65, 0, 0.076, 1)
+) {
+  transition: $property $duration $ease;
+}
+
+.card__container {
+  padding-top: 50px !important;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  flex-direction: row;
+  justify-content: left;
+}
+
+.card__body {
+  img {
+    object-fit: contain;
+    width: 100%;
+    border-radius: 5px;
+  }
+}
+.card_info {
+  border-left: 2px solid white;
+  display: flex;
+  height: auto;
+  width: 100%;
+  background: #141414;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+  flex-wrap: wrap;
+  flex-direction: column;
+  text-align: center;
+  .card_title {
+    margin-top: 20px;
+  }
+  h1 {
+    margin-left: 10px;
+    font-size: 8vh;
+    font-family: "Jost";
+    color: white;
+
+    border-bottom: 2px solid white;
+  }
+  p {
+    margin-left: 10px;
+    color: wheat;
+  }
+}
+
+.card_softwares,
+.check-other {
+  h1 {
+    font-size: 7vh !important;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .card__container {
+    padding: 10px;
+    flex-wrap: wrap;
+  }
+
+  .check-other {
+    .check-container {
+      width: 100%;
+    }
+  }
+}
+
+.learn-more {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+
+  &.learn-more {
+    width: 12rem;
+    height: auto;
+    .circle {
+      @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
+      position: relative;
+      display: block;
+      margin: 0;
+      width: 2rem;
+      height: 2rem;
+      background: $black;
+      border-radius: 1.625rem;
+      .icon {
+        @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        background: $white;
+        &.arrow {
+          @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
+          left: 0.417rem;
+          width: 0.75rem;
+          height: 0.125rem;
+          background: none;
+
+          &::before {
+            position: absolute;
+            content: "";
+            top: -0.25rem;
+            right: 0.0625rem;
+            width: 0.625rem;
+            height: 0.625rem;
+            border-top: 0.125rem solid rgb(0, 0, 0);
+            border-right: 0.125rem solid rgb(0, 0, 0);
+            transform: rotate(45deg);
+          }
+        }
+      }
+    }
+    .button-text {
+      @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
+      position: absolute;
+      top: -8px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.75rem 0;
+      margin: 0 0 0 1.85rem;
+      color: $black;
+      font-weight: 700;
+      line-height: 1.6;
+      text-align: center;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+  }
+  &:hover {
+    .circle {
+      width: 100%;
+      .icon {
+        &.arrow {
+          background: $white;
+          transform: translate(1rem, 0);
+        }
+      }
+    }
+    .button-text {
+      color: $white;
+      opacity: 1;
+    }
+  }
+}
+
+.check-other {
+  margin-top: 30px;
+}
+.check-container {
+  margin-top: 10px;
+  overflow: hidden;
+  border-radius: 10px;
+  width: 48%;
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.check-wrapper {
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.circle {
+  &:active {
+    background-color: orange !important;
+  }
+}

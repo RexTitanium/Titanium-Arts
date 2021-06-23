@@ -1,0 +1,165 @@
+@import url("https://fonts.googleapis.com/css?family=Jost");
+@import url("https://fonts.googleapis.com/css?family=Roboto%20Condensed");
+@import url("https://fonts.googleapis.com/css?family=Metrophobic");
+.footer {
+  background-color: #0e0e0e;
+  margin: 0px auto;
+  padding: 20px 0px 20px 0px;
+}
+.footer-container {
+  padding: 20px;
+}
+.footer-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-evenly;
+}
+
+.logos {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.logos a {
+  gap: 20px !important;
+  padding: 0 !important;
+}
+.links li a {
+  font-family: "Poppins";
+  font-size: 15px;
+  color: beige;
+  text-decoration: none;
+}
+
+.links2 li {
+  font-family: "Metrophobic";
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+.links li a:hover {
+  color: grey;
+}
+
+.footer h5 {
+  color: white;
+  font-family: "Jost";
+}
+
+.social {
+  text-align: center;
+}
+
+.logos a i {
+  color: rgb(77, 77, 77);
+  padding: 8.7px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: white;
+  text-align: center;
+}
+
+.ml {
+  margin-left: 200px;
+}
+
+.social h4 {
+  font-family: "Jost";
+  margin-left: 0px;
+  color: wheat;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.social h4 {
+  color: #ffffff;
+  background: linear-gradient(
+    to right,
+    wheat 0,
+    rgb(214, 214, 255) 25%,
+    aquamarine 50%,
+    rgb(127, 225, 255) 75%,
+    #ffa5a5 100%
+  );
+  background-position: 0;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 6s infinite linear;
+  animation-fill-mode: forwards;
+  -webkit-text-size-adjust: none;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  25% {
+    background-position: 50px;
+  }
+  50% {
+    background-position: 100px;
+  }
+  75% {
+    background-position: 150px;
+  }
+  100% {
+    background-position: 200px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .social h4,
+  .social a,
+  .codes h5,
+  .codes li,
+  .link-nav h5,
+  .link-nav li {
+    font-size: 70%;
+  }
+
+  .logos a i {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    padding: 6px;
+    text-align: center;
+  }
+  .link-nav {
+    margin-left: 20px;
+  }
+}
+
+.btn-instagram i:hover {
+  background-color: rgb(255, 79, 138);
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.btn-linkedin i:hover {
+  background-color: rgb(45, 146, 219);
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.btn-github i:hover {
+  background-color: rgb(58, 58, 58);
+  color: rgb(255, 255, 255);
+  transition: all 0.2s ease;
+}
+
+.btn-twitter i:hover {
+  background-color: rgb(0, 174, 255);
+  color: white;
+  transition: all 0.2s ease;
+}

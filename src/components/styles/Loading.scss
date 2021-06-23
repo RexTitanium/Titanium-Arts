@@ -1,0 +1,26 @@
+.loading {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 5px solid rgb(63, 63, 63);
+  animation: shape-change 1s infinite;
+}
+
+@keyframes shape-change {
+  0% {
+    transform: rotateZ(0deg);
+
+    border-bottom: 5px solid rgb(255, 255, 255);
+  }
+
+  100% {
+    transform: rotateZ(360deg);
+
+    border-bottom: 5px solid rgb(255, 255, 255);
+  }
+}
+
+.loading-container {
+  justify-content: center;
+  padding: 50px;
+}
