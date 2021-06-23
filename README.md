@@ -27,7 +27,7 @@
 <br/>
 <p align="center">
   <a href="https://github.com/RexTitanium/Titanium-Arts.git">
-    <img src="public/assets/images/site.png" alt="Site" width="100%" height="100%">
+    <img src="public/assets/images/site.jpg" alt="Site" width="100%" height="100%">
   </a>
 </p>
 <br/>
