@@ -3,6 +3,10 @@ import "./styles/IndCard.scss";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Cards from "../components/Cards";
+import "./styles/Slider.css";
+import { FaChevronCircleRight, FaChevronCircleLeft } from "react-icons/fa";
+import Carousel from "react-gallery-carousel";
+import "react-gallery-carousel/dist/index.css";
 
 function IndCard({ cards, setLoc, similar }) {
   useEffect(() => {
@@ -34,7 +38,25 @@ function IndCard({ cards, setLoc, similar }) {
         exit={{ x: "-100vw" }}
         transition={{ type: "spring", stiffness: 120 }}
       >
-        <img src={cards.image} />
+        {cards.images ? (
+          <Carousel
+            className="carousel"
+            images={cards.images}
+            hasMediaButton={false}
+            hasSizeButton={false}
+            hasThumbnails={false}
+            hasDotButtons="bottom"
+            shouldLazyLoad={true}
+            leftIcon={<FaChevronCircleLeft className="left_arrow dark" />}
+            rightIcon={<FaChevronCircleRight className="right_arrow dark" />}
+            activeIcon={<button className="button btn-active"></button>}
+            passiveIcon={<button className="button"></button>}
+            hasTransition={true}
+            objectFit={"contain"}
+          />
+        ) : (
+          <img src={cards.image} />
+        )}
       </motion.div>
       <motion.div
         initial={{ y: "-200%" }}
@@ -129,7 +151,7 @@ function IndCard({ cards, setLoc, similar }) {
           <a
             className="learn-more"
             href={cards.link}
-            download={cards.title}
+            download={cards.images ? cards.title + ".rar" : cards.title}
             target="_blank"
           >
             <span className="circle" aria-hidden="true">

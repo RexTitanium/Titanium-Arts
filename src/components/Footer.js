@@ -4,22 +4,73 @@ import "./styles/Footer.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { Tooltip, Zoom } from "@material-ui/core";
 
-const useStylesBootstrap = makeStyles((theme) => ({
+const instaBootstrap = makeStyles((theme) => ({
   arrow: {
-    color: "rgb(256,256,256)",
+    color: "rgb(255, 79, 138)",
   },
   tooltip: {
-    backgroundColor: "rgb(256, 256, 256)",
-    color: "black",
+    backgroundColor: "rgb(255, 79, 138)",
+    color: "white",
+    fontFamily: "Poppins",
+  },
+}));
+const linkedinBootstrap = makeStyles((theme) => ({
+  arrow: {
+    color: "rgb(45, 146, 219)",
+  },
+  tooltip: {
+    backgroundColor: "rgb(45, 146, 219)",
+    color: "white",
     fontFamily: "Poppins",
   },
 }));
 
-function BootstrapTooltip(props) {
-  const classes = useStylesBootstrap();
+const githubBootstrap = makeStyles((theme) => ({
+  arrow: {
+    color: "rgb(58, 58, 58)",
+  },
+  tooltip: {
+    backgroundColor: "rgb(58, 58, 58)",
+    color: "white",
+    fontFamily: "Poppins",
+  },
+}));
+
+const twitterBootstrap = makeStyles((theme) => ({
+  arrow: {
+    color: "rgb(0, 174, 255)",
+  },
+  tooltip: {
+    backgroundColor: "rgb(0, 174, 255)",
+    color: "white",
+    fontFamily: "Poppins",
+  },
+}));
+
+function GithubTooltip(props) {
+  const classes = githubBootstrap();
 
   return <Tooltip arrow classes={classes} {...props} />;
 }
+
+function TwitterTooltip(props) {
+  const classes = twitterBootstrap();
+
+  return <Tooltip arrow classes={classes} {...props} />;
+}
+
+function InstaTooltip(props) {
+  const classes = instaBootstrap();
+
+  return <Tooltip arrow classes={classes} {...props} />;
+}
+
+function LinkedinTooltip(props) {
+  const classes = linkedinBootstrap();
+
+  return <Tooltip arrow classes={classes} {...props} />;
+}
+
 function Footer(props) {
   return (
     <div className="footer">
@@ -28,7 +79,7 @@ function Footer(props) {
           <div className="social">
             <h4>TITANIUM ARTS</h4>
             <div className=" logos">
-              <BootstrapTooltip
+              <InstaTooltip
                 TransitionComponent={Zoom}
                 title="Instagram"
                 arrow
@@ -40,8 +91,8 @@ function Footer(props) {
                 >
                   <i className="fa fa-instagram fa-lg"></i>
                 </a>
-              </BootstrapTooltip>
-              <BootstrapTooltip
+              </InstaTooltip>
+              <LinkedinTooltip
                 TransitionComponent={Zoom}
                 title="Linkedin"
                 arrow
@@ -53,8 +104,8 @@ function Footer(props) {
                 >
                   <i className="fa fa-linkedin fa-lg"></i>
                 </a>
-              </BootstrapTooltip>
-              <BootstrapTooltip
+              </LinkedinTooltip>
+              <GithubTooltip
                 TransitionComponent={Zoom}
                 title="Github"
                 arrow
@@ -67,8 +118,8 @@ function Footer(props) {
                 >
                   <i className="fa fa-github fa-lg"></i>
                 </a>
-              </BootstrapTooltip>
-              <BootstrapTooltip
+              </GithubTooltip>
+              <TwitterTooltip
                 TransitionComponent={Zoom}
                 title="Twitter"
                 arrow
@@ -80,7 +131,7 @@ function Footer(props) {
                 >
                   <i className="fa fa-twitter fa-lg"></i>
                 </a>
-              </BootstrapTooltip>
+              </TwitterTooltip>
             </div>
           </div>
 

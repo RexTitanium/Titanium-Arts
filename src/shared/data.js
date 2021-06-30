@@ -153,7 +153,19 @@ export const Cards = [
   {
     id: 13,
     image: "/assets/images/FallvsAmong5.jpg",
-    link: "/assets/images/FallvsAmong5.png",
+    link: "/assets/images/FallvsAmong.rar",
+    images: [
+      {
+        src: "/assets/images/FallvsAmong5.jpg",
+      },
+      {
+        src: "/assets/images/FallvsAmong2.png",
+      },
+      {
+        src: "/assets/images/FallvsAmong6.png",
+      },
+      { src: "/assets/images/FallvsAmong7.png" },
+    ],
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     isBanner: false,
@@ -230,6 +242,24 @@ export const Cards = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     isBanner: false,
     title: "WINDY TRACKS",
+    text: "Blender, Photoshop",
+    isNew: false,
+    featured: false,
+  },
+  {
+    id: 20,
+    image: "/assets/images/RacerBoy2.png",
+    images: [
+      { src: "/assets/images/Racerboy2.png" },
+      {
+        src: "/assets/images/Racerboy3.png",
+      },
+    ],
+    link: "/assets/images/RacerBoy.rar",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    isBanner: true,
+    title: "RACER BOY",
     text: "Blender, Photoshop",
     isNew: false,
     featured: false,

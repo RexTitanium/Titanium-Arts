@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./styles/Slider.css";
 import { FaChevronCircleRight, FaChevronCircleLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
+import RBCarousel from "react-bootstrap-carousel";
 
 function Slider({ slides, current, setCurrent }) {
   const length = slides.length;
@@ -18,6 +20,7 @@ function Slider({ slides, current, setCurrent }) {
       <div className="slider">
         <FaChevronCircleLeft className="left_arrow" onClick={prevSlide} />
         <FaChevronCircleRight className="right_arrow" onClick={nextSlide} />
+
         {slides.map((card, i) => {
           return (
             <div
@@ -32,6 +35,7 @@ function Slider({ slides, current, setCurrent }) {
             </div>
           );
         })}
+
         <div className="empty-row"></div>
       </div>
 
@@ -41,6 +45,9 @@ function Slider({ slides, current, setCurrent }) {
             <button
               key={i}
               className={`button ${i === current ? "btn-active" : ""}`}
+              onClick={() => {
+                setCurrent(i);
+              }}
             ></button>
           );
         })}

@@ -171,10 +171,19 @@
 .feat {
   transition: 500ms ease;
   background-color: rgb(126, 219, 255);
+  &:hover {
+    background-color: rgb(28, 49, 58);
+    color: #fff;
+  }
 }
 
 .newcont {
+  transition: 500ms ease;
   background-color: rgb(255, 231, 126);
+  &:hover {
+    background-color: rgb(85, 71, 0);
+    color: #fff;
+  }
 }
 
 .contact-button {

@@ -24,7 +24,6 @@ $black: #8ad4ff;
 
 .card__body {
   img {
-    object-fit: contain;
     width: 100%;
     border-radius: 5px;
   }
@@ -190,4 +189,43 @@ $black: #8ad4ff;
   &:active {
     background-color: orange !important;
   }
+}
+
+.card__body {
+  width: 100%;
+
+  .slide-container {
+    width: auto;
+    height: auto;
+    img {
+      object-fit: cover;
+    }
+  }
+}
+
+._14Fp5 {
+  gap: 10px;
+}
+
+._29p_Y {
+  display: none !important;
+}
+
+.carousel {
+  border-radius: 10px;
+  width: 100%;
+  height: 50% !important;
+
+  li {
+    img {
+      object-fit: cover !important;
+    }
+  }
+  button {
+    margin-bottom: 10px;
+  }
+}
+
+.dark {
+  color: #141414 !important;
 }
