@@ -4,7 +4,7 @@ export const Cards = [
     image: "/assets/images/OTW2.jpg",
     link: "/assets/images/OTW2.png",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "This was my first Photoshop Manipulation. I created it using stock images from google. I really like the way digital creatives work and portray what you want to show to the world.",
     isBanner: false,
     title: "FALLS HIKE",
     text: "Photoshop",
@@ -111,7 +111,7 @@ export const Cards = [
     isBanner: true,
     title: "FLYING RINK",
     text: "Blender, Photoshop",
-    isNew: true,
+    isNew: false,
     featured: false,
   },
   {
@@ -262,6 +262,36 @@ export const Cards = [
     title: "RACER BOY",
     text: "Blender, Photoshop",
     isNew: false,
+    featured: false,
+  },
+  {
+    id: 21,
+    image: "/assets/images/Samurai.png",
+    link: "/assets/images/Samurai.png",
+    description:
+      "Yokai refers directly to a super entity of Japanese forklore which has super human abilities. One such Yokai or demon is Oni. Oni is one of the most famous mythical creatures of the Japanese forklore. I have tried to recreate a modern picture by getting inspired from Cyberpunk, as the colour and neon effects of the city tries to display its futuristic era.",
+    isBanner: false,
+    title: "YOKAI",
+    text: "Photoshop",
+    isNew: false,
+    featured: false,
+  },
+  {
+    id: 22,
+    image: "/assets/images/Ldr.jpg",
+    images: [
+      { src: "/assets/images/Ldr.jpg" },
+      {
+        src: "/assets/images/Ldr2.jpg",
+      },
+    ],
+    link: "/assets/images/Ldr.zip",
+    description:
+      "Love Death and Robots. What a mind bending show by Netflix. I always fantasize about living in a futuristic world as portrayed in \"Blade Runner 2049\" or \"Cyberpunk\". This artwork is a portrayal of maybe our near future, where we will be much more technologically advanced and holograms and neon lights would be everywhere. Enjoy this artwork. ",
+    isBanner: true,
+    title: "Love . Death . Robots",
+    text: " Photoshop",
+    isNew: true,
     featured: false,
   },
 ];
