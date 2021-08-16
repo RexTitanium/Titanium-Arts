@@ -13,13 +13,13 @@ function Work({ cards, setLoc }) {
   return (
     <div className="home">
       <Slider
-        slides={cards.filter((card) => card.isBanner === true)}
+        slides={cards && cards.filter((card) => card.isBanner === true)}
         current={current}
         setCurrent={setCurrent}
       />
 
       <div className="card-container">
-        {cards.map((card, i) => {
+        {cards && cards.map((card, i) => {
           return (
             <div
               key={i}

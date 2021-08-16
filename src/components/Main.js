@@ -11,11 +11,17 @@ import "./styles/Main.css";
 import { Cards, bg } from "../shared/data";
 import Footer from "./Footer";
 import ScrollToTop from "./ScrollToTop";
+import ImageUpload from "./ImageUpload";
+import Login from "./Login";
+import {db} from '../shared/firebase';
 
 function Main() {
   const location = useLocation();
   const [loc, setLoc] = useState(0);
   const [banner, setBanner] = useState("");
+  const [dcCards, setCards] = useState(null);
+  const [auth, setAuth] = useState(false);
+ 
 
   useEffect(() => {
     function setBg() {
@@ -24,6 +30,25 @@ function Main() {
     setBg();
   });
 
+  useEffect(() => {
+    console.log('mounted')
+    db.collection('CardData')
+    .get()
+    .then(snapshot => {
+      const Cards = []
+      var id =0;
+      snapshot.forEach((card) => {
+
+        const data = card.data();
+        Cards.push({...data, id: id});
+        id = id +1;
+      })
+      setCards(Cards);
+    })
+    .catch( error => console.log(error));
+  }, []);
+
+  console.log(dcCards);
   const HomePage = () => {
     return (
       <motion.div
@@ -32,7 +57,7 @@ function Main() {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <Home cards={Cards} banner={banner} setLoc={setLoc} />
+        <Home cards={dcCards} dcCards={dcCards} banner={banner} setLoc={setLoc} />
       </motion.div>
     );
   };
@@ -41,12 +66,12 @@ function Main() {
     return (
       <IndCard
         cards={
-          Cards.filter(
+          dcCards && dcCards.filter(
             (card) => card.id === parseInt(match.params.cardId, 10)
           )[0]
         }
         setLoc={setLoc}
-        similar={Cards.filter(
+        similar={dcCards && dcCards.filter(
           (card) => card.id !== parseInt(match.params.cardId, 10)
         )}
       />
@@ -60,7 +85,7 @@ function Main() {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <Work cards={Cards} setLoc={setLoc} />
+        <Work cards={dcCards} setLoc={setLoc} />
       </motion.div>
     );
   };
@@ -104,6 +129,8 @@ function Main() {
             <Route exact path="/work" component={() => <WorkPage />} />
             <Route exact path="/aboutus" component={() => <AboutPage />} />
             <Route exact path="/contactus" component={() => <ContactPage />} />
+            <Route exact path="/login" component={() => <Login setAuth={setAuth} />} />
+            <Route exact path="/upload" component={() => <ImageUpload auth={auth} setAuth={setAuth} /> } />
             <Route
               path="/work/:cardId"
               render={(routeProps) => <CardWithId {...routeProps} />}
