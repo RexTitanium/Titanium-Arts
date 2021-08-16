@@ -54,7 +54,7 @@ First Clone the repository. Install npm modules and start the application
 
 - Clone the repository
   ```sh
-  git clone https://github.com/RexTitanium/Kudos-project.git
+  git clone https://github.com/RexTitanium/Titanium-Arts.git
   ```
 - Install npm packages
   ```sh
