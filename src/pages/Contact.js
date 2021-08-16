@@ -28,7 +28,7 @@ function Contact({ banner, setLoc }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    db.collection("contacts")
+    db.collection("allcontacts")
       .add({ ...details })
       .then(() => {
         setSubmit(true);

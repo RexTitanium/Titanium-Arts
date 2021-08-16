@@ -15,10 +15,12 @@ function IndCard({ cards, setLoc, similar }) {
 
   const [checkout, setCheckOut] = useState([]);
   let n = 2;
+  const defaultText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
 
   useEffect(() => {
     function setBg() {
-      setCheckOut(
+      setCheckOut(similar &&
         similar
           .sort(function () {
             return 0.5 - Math.random();
@@ -38,25 +40,8 @@ function IndCard({ cards, setLoc, similar }) {
         exit={{ x: "-100vw" }}
         transition={{ type: "spring", stiffness: 120 }}
       >
-        {cards.images ? (
-          <Carousel
-            className="carousel"
-            images={cards.images}
-            hasMediaButton={false}
-            hasSizeButton={false}
-            hasThumbnails={false}
-            hasDotButtons="bottom"
-            shouldLazyLoad={true}
-            leftIcon={<FaChevronCircleLeft className="left_arrow dark" />}
-            rightIcon={<FaChevronCircleRight className="right_arrow dark" />}
-            activeIcon={<button className="button btn-active"></button>}
-            passiveIcon={<button className="button"></button>}
-            hasTransition={true}
-            objectFit={"contain"}
-          />
-        ) : (
-          <img src={cards.image} />
-        )}
+         
+      <img src={cards && cards.image} />
       </motion.div>
       <motion.div
         initial={{ y: "-200%" }}
@@ -75,7 +60,7 @@ function IndCard({ cards, setLoc, similar }) {
           }}
           className="card_title"
         >
-          <h1>{cards.title}</h1>
+          <h1>{cards && cards.title}</h1>
         </motion.div>
         <motion.div
           initial={{ x: "100vw" }}
@@ -87,7 +72,7 @@ function IndCard({ cards, setLoc, similar }) {
           }}
           className="card_description"
         >
-          <p>{cards?.description}</p>
+          <p>{cards?.description == "" ? defaultText : cards?.description }</p>
         </motion.div>
         <motion.div
           initial={{ x: "100vw" }}
@@ -100,7 +85,7 @@ function IndCard({ cards, setLoc, similar }) {
           className="card_softwares"
         >
           <h1>Softwares Used:</h1>
-          <p>{cards.text}</p>
+          <p>{cards?.text}</p>
         </motion.div>
 
         <div className="check-other">
@@ -116,7 +101,7 @@ function IndCard({ cards, setLoc, similar }) {
             Explore More :{" "}
           </motion.h1>
           <div className="check-wrapper">
-            {checkout.map((card) => {
+            {checkout?.map((card) => {
               return (
                 <motion.div
                   className="check-container"
@@ -150,8 +135,8 @@ function IndCard({ cards, setLoc, similar }) {
         >
           <a
             className="learn-more"
-            href={cards.link}
-            download={cards.images ? cards.title + ".rar" : cards.title}
+            href={cards?.link}
+            download={cards?.title}
             target="_blank"
           >
             <span className="circle" aria-hidden="true">

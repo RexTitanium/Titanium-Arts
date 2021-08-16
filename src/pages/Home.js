@@ -75,7 +75,7 @@ function Home({ cards, banner, setLoc }) {
             style={{ transitionDelay: checkFeatured ? "500ms" : "0ms" }}
           >
             <div className="featured-image">
-              {cards.map((card, i) => {
+              {cards && cards.map((card, i) => {
                 if (card.featured === true) {
                   return <RenderCard card={card} key={i + 1} />;
                 }
@@ -152,7 +152,7 @@ function Home({ cards, banner, setLoc }) {
 
             <Link
               className="explore newcont"
-              to={`/work/${cards.filter((card) => card.isNew === true)[0].id}/${
+              to={`/work/${cards && cards.filter((card) => card.isNew === true)[0].id}/${cards && 
                 cards.filter((card) => card.isNew === true)[0].title
               }`}
               onClick={() => {
@@ -166,7 +166,7 @@ function Home({ cards, banner, setLoc }) {
         <div className="images block">
           <Slide in={checkNew} direction="left" mountOnEnter unmountOnExit>
             <div className="new-content">
-              {cards.map((card, i) => {
+              {cards && cards.map((card, i) => {
                 if (card.isNew === true) {
                   return <RenderCard card={card} key={i + 1} />;
                 }
@@ -231,7 +231,7 @@ function RenderCard({ card }) {
                 type: "spring",
                 stiffness: 200,
               }}
-              src={card.image}
+              src={card.link}
               alt={card.title}
               className="card_image"
             />

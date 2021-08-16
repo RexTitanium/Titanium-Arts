@@ -50,6 +50,16 @@ function Navbar({ loc }) {
       <motion.div className="menu-icon">
         <Hamburger toggled={sidebar} onToggle={handleClick} direction="left" />
       </motion.div>
+      <div className="upload-button">
+          <Link 
+          
+          style={{textDecoration: 'none'}}
+          to = "/upload"
+          >
+            <i className="fa fa-angle-up bounce" aria-hidden="true"><span> Upload </span></i>
+          </Link>
+      </div>
+
       <div className={`nav-links ${sidebar ? "clicked" : ""}`}>
         <Link
           style={{ textDecoration: "none" }}

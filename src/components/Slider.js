@@ -6,7 +6,7 @@ import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import RBCarousel from "react-bootstrap-carousel";
 
 function Slider({ slides, current, setCurrent }) {
-  const length = slides.length;
+  const length = slides && slides.length;
 
   const prevSlide = () => {
     setCurrent(current === 0 ? length - 1 : current - 1);
@@ -21,7 +21,7 @@ function Slider({ slides, current, setCurrent }) {
         <FaChevronCircleLeft className="left_arrow" onClick={prevSlide} />
         <FaChevronCircleRight className="right_arrow" onClick={nextSlide} />
 
-        {slides.map((card, i) => {
+        {slides && slides.map((card, i) => {
           return (
             <div
               className={`slide ${i === current ? "active" : "out"}`}
@@ -40,7 +40,7 @@ function Slider({ slides, current, setCurrent }) {
       </div>
 
       <div className="in">
-        {slides.map((card, i) => {
+        {slides && slides.map((card, i) => {
           return (
             <button
               key={i}
