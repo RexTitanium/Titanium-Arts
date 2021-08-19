@@ -14,6 +14,7 @@ import ScrollToTop from "./ScrollToTop";
 import ImageUpload from "./ImageUpload";
 import Login from "./Login";
 import {db} from '../shared/firebase';
+import InputTag from './InputTag';
 
 function Main() {
   const location = useLocation();
@@ -31,7 +32,6 @@ function Main() {
   });
 
   useEffect(() => {
-    console.log('mounted')
     db.collection('CardData')
     .get()
     .then(snapshot => {
@@ -47,8 +47,6 @@ function Main() {
     })
     .catch( error => console.log(error));
   }, []);
-
-  console.log(dcCards);
   const HomePage = () => {
     return (
       <motion.div
@@ -131,6 +129,7 @@ function Main() {
             <Route exact path="/contactus" component={() => <ContactPage />} />
             <Route exact path="/login" component={() => <Login setAuth={setAuth} />} />
             <Route exact path="/upload" component={() => <ImageUpload auth={auth} setAuth={setAuth} /> } />
+            <Route exact path="/iptag" component={() => <InputTag /> } />
             <Route
               path="/work/:cardId"
               render={(routeProps) => <CardWithId {...routeProps} />}

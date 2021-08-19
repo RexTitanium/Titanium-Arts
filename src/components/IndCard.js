@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./styles/IndCard.scss";
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Cards from "../components/Cards";
 import "./styles/Slider.css";
-import { FaChevronCircleRight, FaChevronCircleLeft } from "react-icons/fa";
-import Carousel from "react-gallery-carousel";
 import "react-gallery-carousel/dist/index.css";
 
 function IndCard({ cards, setLoc, similar }) {

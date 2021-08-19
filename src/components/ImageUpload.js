@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import {LinearProgress, Snackbar } from '@material-ui/core';
 import MuiAlert from "@material-ui/lab/Alert";
 import {useHistory} from 'react-router-dom';
+import InputTag from './InputTag';
 
 const useStyles = makeStyles({
     root: {
@@ -35,6 +36,7 @@ function ImageUpload ({auth,setAuth}) {
             link: "",
             description: "",
             text: "",
+            tags: [],
             featured: false,
             isNew: false,
             isBanner: false,
@@ -67,7 +69,6 @@ function ImageUpload ({auth,setAuth}) {
           .catch((error) => {
             setError(true);
           });
-          console.log(details);
         resetForm();
       };
 
@@ -77,6 +78,7 @@ function ImageUpload ({auth,setAuth}) {
             link: "",
             description: "",
             text: "",
+            tags: [],
             featured: false,
             isNew: false,
             isBanner: false,
@@ -104,7 +106,6 @@ function ImageUpload ({auth,setAuth}) {
         },
         (complete) => {
             storage.ref('images').child(image.name).getDownloadURL().then(url => {
-                console.log(url);
                 setUrl(url);
                 setDetails({...details,link: url, image: url});
                 alert("Upload Success");
@@ -166,6 +167,7 @@ function ImageUpload ({auth,setAuth}) {
                             <label> Publish on Banner?: 
                                 <input type="checkbox" name="isBanner" value="true" onChange={handleText} checked={details.isBanner}/>
                             </label>
+                            <InputTag setDetails={setDetails} details={details}/>
                             <br/>
                             <button type="submit" >Submit</button>
                             <button type="button" onClick={handleLogout}>Logout</button>
