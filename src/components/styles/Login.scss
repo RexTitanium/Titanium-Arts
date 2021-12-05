@@ -1,0 +1,194 @@
+.login-form {
+  width: 100%;
+  height: 100%;
+  padding: 100px;
+}
+
+.login-wrapper {
+  background-color: #141414;
+  border-radius: 10px;
+  height: 450px;
+  overflow: hidden;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  div {
+    font-family: "Poppins";
+
+    color: #fff;
+    input {
+      font-family: "Poppins";
+      margin-top: 0px;
+    }
+  }
+  button {
+    width: 100px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+  }
+}
+
+.login-content {
+  width: 100%;
+  background-image: url("./abstract_bg_design2.jpg");
+  background-size: cover;
+  padding: 50px;
+  display: flex;
+  gap: 100px;
+}
+
+.empty-block {
+  width: 40%;
+  height: 100%;
+  background-image: url("./abstract_bg_design.jpg");
+  background-size: cover;
+  box-shadow: -6px 0px 5px rgb(14, 14, 14);
+}
+
+.errMess {
+  color: red;
+}
+
+.btn-googleSign,
+.btn-forgot-pass {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 15px;
+  overflow: hidden;
+  width: 200px !important;
+}
+.message-account {
+  margin-top: 10px !important;
+  color: rgb(185, 185, 185);
+  span {
+    margin-left: 10px;
+    color: rgb(170, 170, 255);
+    transition: all 300ms ease;
+    &:hover {
+      color: wheat;
+      transition: all 300ms ease;
+    }
+  }
+}
+
+//Ignore
+
+.group1 {
+  position: relative;
+  margin-bottom: 45px;
+  width: 100%;
+  background-color: transparent;
+}
+input {
+  font-family: "Poppins";
+  font-size: 18px;
+  color: rgb(255, 255, 255);
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #757575;
+  background-color: transparent;
+  opacity: 1;
+}
+input:focus {
+  outline: none;
+}
+
+/* LABEL ======================================= */
+.group1 label {
+  font-family: "Poppins";
+  color: #999;
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 20px;
+  top: 10px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label,
+input:valid ~ label {
+  top: -25px;
+  left: 0;
+  font-family: "Poppins";
+  font-size: 14px;
+  color: rgb(196, 152, 255);
+}
+
+/* BOTTOM BARS ================================= */
+.bar1 {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.bar1:before,
+.bar1:after {
+  content: "";
+  height: 2px;
+  width: 0%;
+  bottom: 1px;
+  position: absolute;
+  background: linear-gradient(to right, rgb(207, 163, 255), rgb(111, 0, 255));
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+input:focus ~ .bar1:before,
+input:focus ~ .bar1:after {
+  width: 100%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight1 {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* active state */
+input:focus ~ .highlight1 {
+  -webkit-animation: inputHighlighter 0.3s ease;
+  -moz-animation: inputHighlighter 0.3s ease;
+  animation: inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from {
+    background: transparent;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+@-moz-keyframes inputHighlighter {
+  from {
+    background: transparent;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+@keyframes inputHighlighter {
+  from {
+    background: transparent;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}

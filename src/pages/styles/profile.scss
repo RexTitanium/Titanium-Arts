@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+.profile-page {
+  height: 900px;
+  .profile-background {
+    height: 500px;
+    overflow: hidden;
+    img {
+      opacity: 0.45;
+      width: 100%;
+    }
+  }
+  .profile-page-container {
+    margin-top: 50px;
+    padding: 20px;
+    color: #fff;
+    font-family: "Poppins";
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 250px;
+  }
+}
+
+.user-id {
+  background-color: #111111;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.user-image {
+  border-radius: 50%;
+  position: relative;
+  top: -50px;
+  border: 5px #00163d solid;
+}
+
+.profile-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  padding: 50px;
+}

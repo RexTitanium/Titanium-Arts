@@ -4,7 +4,6 @@ import { withStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import { Switch, FormControlLabel, Slide, Zoom } from "@material-ui/core";
 import { motion } from "framer-motion";
-import Loading from "../components/Loading";
 function Home({ cards, banner, setLoc }) {
   const BlueSwitch = withStyles({
     switchBase: {

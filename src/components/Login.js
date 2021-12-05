@@ -1,102 +1,205 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import {Snackbar } from '@material-ui/core';
-import MuiAlert from "@material-ui/lab/Alert";
-import './styles/LoginUpload.scss';
+import React, { useState, useEffect } from "react";
+import firebase from "../shared/firebase";
+import "./styles/Login.scss";
+import { FcGoogle } from "react-icons/fc";
+import Profile from "../pages/Profile";
 
-function Alert(props) {
-    return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
+function Login({ user, setUser, setLoc, setAuth, handleLogout, auth }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [hasAccount, setHasAccount] = useState(true);
 
+  const clearInput = () => {
+    setEmail("");
+    setPassword("");
+  };
 
-function Login({setAuth}) {
-    let history = useHistory();
+  const clearErrors = () => {
+    setEmailError("");
+    setPasswordError("");
+  };
 
+  const handleLogin = (e) => {
+    setAuth(false);
+    clearErrors();
+    if (email == "s4samyak@gmail.com") {
+      setAuth(true);
+    }
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch((err) => {
+        switch (err.code) {
+          case "auth/invalid-email":
+          case "auth/user-disabled":
+          case "auth/user-not-found":
+            setEmailError(err.message);
+            break;
+          case "auth/wrong-password":
+            setPasswordError(err.message);
+            break;
+        }
+      });
+  };
 
-    const [submit, setSubmit] = useState(false);
-    const [error, setError] = useState({
-        err: false,
-        message: "",
+  const handleSignup = (e) => {
+    clearErrors();
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .catch((err) => {
+        switch (err.code) {
+          case "auth/email-already-in-use":
+          case "auth/invalid-email":
+            setEmailError(err.message);
+            break;
+          case "auth/weak-password":
+            setPasswordError(err.message);
+            break;
+        }
+      });
+  };
+
+  const authListener = () => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        setEmail(user.email);
+        if (email == "s4samyak@gmail.com") {
+          setAuth(true);
+        }
+        clearInput();
+        setUser(user);
+      } else {
+        setUser("");
+      }
     });
+  };
 
-    const [login, setLogin] = useState({
-        user: "",
-        password:  "",
-    })
+  const forgotPassword = () => {
+    firebase
+      .auth()
+      .sendPasswordResetEmail(email)
+      .then(() => {
+        // Password reset email sent!
+        // ..
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ..
+      });
+  };
 
-    const cred = {
-        username: "rextitanium",
-        email: "s4samyak@gmail.com",
-        password: "zephyrus",
-    }
+  const handleGoogle = () => {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then((result) => {
+        /** @type {firebase.auth.OAuthCredential} */
+        var credential = result.credential;
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        var token = credential.accessToken;
+        var user = result.user;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-    const handleClose = (event, reason) => {
-        if (reason === "clickaway") {
-          return;
-        }
-        setSubmit(false);
-        setError({...error, err:false});
-      };
+  useEffect(() => {
+    authListener();
+    setLoc(4);
+  }, []);
 
-
-    const handleChange = e => {
-        setLogin({...login, [e.target.name]: e.target.value});
-    }
-
-    const handleSubmit = e => {
-        e.preventDefault();
-
-        if(login.user === cred.username || login.user === cred.email) {
-            if(login.password == cred.password) {
-                setError({...error, err: false});
-                setSubmit(true);
-                
-                setTimeout(function(){
-                    setAuth(true);
-                    history.push("/upload");
-               }.bind(this),3000);
-
-            }
-            else setError({...error, err: true, message:"Wrong Password"});
-        }
-        else setError({...error, err: true, message:"Wrong Username or Email"});
-    }
-
+  if (!user) {
     return (
-        <div className="login">
-            <form className="login-form" onSubmit={handleSubmit} method="post">
-                <label>
-                    Login Id:
-                    <input type="text" name="user" value={login.user} onChange={handleChange}/>
-                </label>
-                <br/>
-                <label>
-                    Password
-                    <input type="password" name="password" value={login.password} onChange={handleChange}/>
-                </label>
-                <br/>
-                <button type="submit" className="btn-submit">Submit</button>
-            </form>
-            <Snackbar
-                anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-                open={submit}
-                autoHideDuration={6000}
-                onClose={handleClose}>
-                <Alert onClose={handleClose} severity="success">
-                    Logged in successfully
-                </Alert>
-            </Snackbar>
-            <Snackbar
-                anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-                open={error.err}
-                autoHideDuration={6000}
-                onClose={handleClose}>
-                <Alert onClose={handleClose} severity="error">
-                    {error.message}
-                </Alert>
-            </Snackbar>
+      <div>
+        <div className="login-form">
+          <div className="login-wrapper">
+            <div className="login-content">
+              <div className="login-group">
+                <div className="group1">
+                  <input
+                    type="text"
+                    name="user"
+                    autoFocus
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <span className="highlight1"></span>
+                  <span className="bar1"></span>
+                  <label>Email</label>
+                </div>
+                <p className="errMess">{emailError}</p>
+                <div className="group1">
+                  <input
+                    type="password"
+                    name="password"
+                    value={password}
+                    required
+                    autoFocus
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <span className="highlight1"></span>
+                  <span className="bar1"></span>
+                  <label>Password</label>
+                </div>
+                <p className="errMess">{passwordError}</p>
+                <div className="btn-container">
+                  {hasAccount ? (
+                    <>
+                      <button onClick={handleLogin} className="btn-sign">
+                        Sign in
+                      </button>
+
+                      <p className="message-account">
+                        Don't have an account?
+                        <span onClick={() => setHasAccount(!hasAccount)}>
+                          Sign Up
+                        </span>
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <button onClick={handleSignup} className="btn-sign">
+                        Sign Up
+                      </button>
+                      <p className="message-account">
+                        Have an account?
+                        <span onClick={() => setHasAccount(!hasAccount)}>
+                          Sign in
+                        </span>
+                      </p>
+                    </>
+                  )}
+                </div>
+              </div>
+              <button onClick={handleGoogle} className="btn-googleSign">
+                <span>
+                  <FcGoogle />{" "}
+                </span>
+                Sign In With Google
+              </button>
+              <button onClick={forgotPassword} className="btn-forgot-pass">
+                Forgot Password?
+              </button>
+            </div>
+            <div className="empty-block"></div>
+          </div>
         </div>
-    )
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <Profile user={user} handleLogout={handleLogout} auth={auth} />
+      </div>
+    );
+  }
 }
 
-export default Login
+export default Login;

@@ -4,7 +4,7 @@ import { Turn as Hamburger } from "hamburger-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-function Navbar({ loc }) {
+function Navbar({ loc, user, handleLogout }) {
   const [sidebar, showSidebar] = useState(false);
   const [nav, showNav] = useState(false);
 
@@ -27,7 +27,9 @@ function Navbar({ loc }) {
 
   return (
     <div
-      className={`navbar ${nav === true || sidebar === true ? "show" : ""} `}
+      className={`navbar ${
+        nav === true || sidebar === true ? "nav-show" : ""
+      } `}
     >
       <div className="nav-header">
         <motion.h1
@@ -50,16 +52,6 @@ function Navbar({ loc }) {
       <motion.div className="menu-icon">
         <Hamburger toggled={sidebar} onToggle={handleClick} direction="left" />
       </motion.div>
-      <div className="upload-button">
-          <Link 
-          
-          style={{textDecoration: 'none'}}
-          to = "/upload"
-          >
-            <i className="fa fa-angle-up bounce" aria-hidden="true"><span> Upload </span></i>
-          </Link>
-      </div>
-
       <div className={`nav-links ${sidebar ? "clicked" : ""}`}>
         <Link
           style={{ textDecoration: "none" }}
@@ -117,6 +109,38 @@ function Navbar({ loc }) {
             Contact
           </motion.h1>
         </Link>
+        {user ? (
+          <Link
+            style={{ textDecoration: "none" }}
+            to="/home"
+            className={"underline"}
+          >
+            <motion.h1
+              whileHover={{
+                scale: 1.2,
+                duration: "300ms",
+              }}
+              onClick={handleLogout}
+            >
+              Logout
+            </motion.h1>
+          </Link>
+        ) : (
+          <Link
+            style={{ textDecoration: "none" }}
+            to="/login"
+            className={` ${loc === 4 ? "link-active" : " underline"}`}
+          >
+            <motion.h1
+              whileHover={{
+                scale: 1.2,
+                duration: "300ms",
+              }}
+            >
+              Login
+            </motion.h1>
+          </Link>
+        )}
       </div>
     </div>
   );

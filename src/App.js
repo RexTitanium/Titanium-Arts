@@ -1,11 +1,13 @@
+import { useState } from "react";
 import "./App.css";
 import Main from "./components/Main";
 import { BrowserRouter as Router } from "react-router-dom";
 function App() {
+  const [user, setUser] = useState("");
   return (
     <Router>
       <div className="App">
-        <Main />
+        <Main user={user} setUser={setUser} />
       </div>
     </Router>
   );

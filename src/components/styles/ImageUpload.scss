@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+
+.data-form {
+  padding: 100px;
+  color: #fff;
+  .data-wrapper {
+    border-radius: 10px;
+    padding: 40px;
+    width: 100%;
+    height: 100%;
+    background: #141414;
+  }
+  .image-upload-container {
+    height: 500px;
+    width: 400px;
+    position: absolute;
+    right: 400px;
+    overflow: hidden;
+    padding: 20px;
+
+    img {
+      right: 150px;
+      position: absolute;
+      border-radius: 10px;
+      border: none;
+      max-height: 80%;
+    }
+
+    .image-upload-wrapper {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+
+      .MuiButtonBase-root {
+        color: white !important;
+      }
+    }
+  }
+}
+
+.file-upload {
+  width: 35%;
+  padding: 20px;
+  font-family: "Poppins";
+  border: none;
+}
+.btn-upload {
+  width: 100px;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+}
+
+.card-data-form {
+  margin-top: 35px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 50px 60px;
+  width: 600px;
+  font-family: "Poppins";
+  button {
+    width: 100px;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+  }
+  input[type="checkbox"] {
+    width: 100px;
+    height: 17px;
+  }
+}
+
+.go-back {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  background-color: rgb(161, 217, 255);
+  padding: 10px;
+  border-radius: 5px;
+  &:hover {
+    background-color: rgb(89, 161, 209);
+    transition: 300ms ease;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+  }
+  span svg {
+    transform: rotate(180deg);
+  }
+}
+
+.go-back-div {
+  padding: 0px 0px 20px 0px;
+}
+
+.file-upload {
+  display: none;
+}

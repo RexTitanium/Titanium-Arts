@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "./Navbar";
+import SideBar from "./SideBar";
 import Home from "../pages/Home";
 import Work from "../pages/Work";
 import About from "../pages/About";
@@ -8,21 +8,28 @@ import IndCard from "./IndCard";
 import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import "./styles/Main.css";
-import { Cards, bg } from "../shared/data";
+import { ProfileBackground, bg } from "../shared/data";
 import Footer from "./Footer";
 import ScrollToTop from "./ScrollToTop";
 import ImageUpload from "./ImageUpload";
 import Login from "./Login";
-import {db} from '../shared/firebase';
-import InputTag from './InputTag';
+import firebase, { db } from "../shared/firebase";
+import Temp from "./temp";
+import Profile from "../pages/Profile";
 
-function Main() {
+function Main({ user, setUser }) {
   const location = useLocation();
   const [loc, setLoc] = useState(0);
   const [banner, setBanner] = useState("");
+
   const [dcCards, setCards] = useState(null);
   const [auth, setAuth] = useState(false);
- 
+  //Login
+
+  const handleLogout = (e) => {
+    firebase.auth().signOut();
+    setAuth(false);
+  };
 
   useEffect(() => {
     function setBg() {
@@ -32,20 +39,19 @@ function Main() {
   });
 
   useEffect(() => {
-    db.collection('CardData')
-    .get()
-    .then(snapshot => {
-      const Cards = []
-      var id =0;
-      snapshot.forEach((card) => {
-
-        const data = card.data();
-        Cards.push({...data, id: id});
-        id = id +1;
+    db.collection("CardData")
+      .get()
+      .then((snapshot) => {
+        const Cards = [];
+        var id = 0;
+        snapshot.forEach((card) => {
+          const data = card.data();
+          Cards.push({ ...data, id: id });
+          id = id + 1;
+        });
+        setCards(Cards);
       })
-      setCards(Cards);
-    })
-    .catch( error => console.log(error));
+      .catch((error) => console.log(error));
   }, []);
   const HomePage = () => {
     return (
@@ -55,7 +61,12 @@ function Main() {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <Home cards={dcCards} dcCards={dcCards} banner={banner} setLoc={setLoc} />
+        <Home
+          cards={dcCards}
+          dcCards={dcCards}
+          banner={banner}
+          setLoc={setLoc}
+        />
       </motion.div>
     );
   };
@@ -64,14 +75,18 @@ function Main() {
     return (
       <IndCard
         cards={
-          dcCards && dcCards.filter(
+          dcCards &&
+          dcCards.filter(
             (card) => card.id === parseInt(match.params.cardId, 10)
           )[0]
         }
         setLoc={setLoc}
-        similar={dcCards && dcCards.filter(
-          (card) => card.id !== parseInt(match.params.cardId, 10)
-        )}
+        similar={
+          dcCards &&
+          dcCards.filter(
+            (card) => card.id !== parseInt(match.params.cardId, 10)
+          )
+        }
       />
     );
   };
@@ -83,7 +98,13 @@ function Main() {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <Work cards={dcCards} setLoc={setLoc} />
+        <Work
+          cards={dcCards}
+          setLoc={setLoc}
+          user={user}
+          handleLogout={handleLogout}
+          auth={auth}
+        />
       </motion.div>
     );
   };
@@ -97,6 +118,14 @@ function Main() {
       >
         <About banner={banner} setLoc={setLoc} />
       </motion.div>
+    );
+  };
+
+  const UploadImage = () => {
+    return (
+      <div>
+        <ImageUpload user={user} handleLogout={handleLogout} />
+      </div>
     );
   };
 
@@ -116,20 +145,39 @@ function Main() {
   return (
     <div>
       <ScrollToTop />
-      <div className="header" style={{ zIndex: 2 }}>
-        <Navbar setLoc={setLoc} loc={loc} />
+      <div className="header" style={{ zIndex: 3 }}>
+        <SideBar user={user} />
       </div>
 
       <div>
         <AnimatePresence exitBeforeEnter initial={false}>
           <Switch location={location} key={location.pathname}>
+            <Route
+              exact
+              path="/login"
+              component={() => (
+                <Login
+                  user={user}
+                  setUser={setUser}
+                  setLoc={setLoc}
+                  auth={auth}
+                  setAuth={setAuth}
+                  handleLogout={handleLogout}
+                />
+              )}
+            />
             <Route path="/home" component={() => <HomePage />} />
             <Route exact path="/work" component={() => <WorkPage />} />
             <Route exact path="/aboutus" component={() => <AboutPage />} />
             <Route exact path="/contactus" component={() => <ContactPage />} />
-            <Route exact path="/login" component={() => <Login setAuth={setAuth} />} />
-            <Route exact path="/upload" component={() => <ImageUpload auth={auth} setAuth={setAuth} /> } />
-            <Route exact path="/iptag" component={() => <InputTag /> } />
+            <Route exact path="/temptesting" component={() => <Temp />} />
+            <Route
+              exact
+              path="/profile"
+              component={() => (
+                <Profile user={user} handleLogout={handleLogout} auth={auth} />
+              )}
+            />
             <Route
               path="/work/:cardId"
               render={(routeProps) => <CardWithId {...routeProps} />}

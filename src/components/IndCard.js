@@ -12,17 +12,20 @@ function IndCard({ cards, setLoc, similar }) {
 
   const [checkout, setCheckOut] = useState([]);
   let n = 2;
-  const defaultText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-
+  const softwaresused = cards?.text.split(", ");
+  console.log(softwaresused);
+  const defaultText =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
   useEffect(() => {
     function setBg() {
-      setCheckOut(similar &&
-        similar
-          .sort(function () {
-            return 0.5 - Math.random();
-          })
-          .slice(0, n)
+      setCheckOut(
+        similar &&
+          similar
+            .sort(function () {
+              return 0.5 - Math.random();
+            })
+            .slice(0, n)
       );
     }
     setBg();
@@ -32,13 +35,12 @@ function IndCard({ cards, setLoc, similar }) {
     <div className="card__container">
       <motion.div
         className="card__body"
-        initial={{ x: "-100vw" }}
-        animate={{ x: 0 }}
+        initial={{ opacity: 0.5 }}
+        animate={{ opacity: 1 }}
         exit={{ x: "-100vw" }}
         transition={{ type: "spring", stiffness: 120 }}
       >
-         
-      <img src={cards && cards.image} />
+        <img src={cards && cards.image} />
       </motion.div>
       <motion.div
         initial={{ y: "-200%" }}
@@ -69,7 +71,7 @@ function IndCard({ cards, setLoc, similar }) {
           }}
           className="card_description"
         >
-          <p>{cards?.description == "" ? defaultText : cards?.description }</p>
+          <p>{cards?.description == "" ? defaultText : cards?.description}</p>
         </motion.div>
         <motion.div
           initial={{ x: "100vw" }}
