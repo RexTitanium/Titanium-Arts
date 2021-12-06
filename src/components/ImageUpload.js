@@ -129,158 +129,150 @@ function ImageUpload({ user, handleLogout, auth }) {
     }
   };
 
-  if (user.email !== "s4samyak@gmail.com") {
-    return (
-      <div>
-        <h1>Only Admin Can Upload</h1>
-      </div>
-    );
-  } else {
-    return (
-      <div className="data-form">
-        <div className="data-wrapper">
-          <div className="go-back-div">
-            <a href="/login" className="go-back">
-              <span>
-                <FcIcons.FcAdvance />
-              </span>{" "}
-              Go Back
-            </a>
+  return (
+    <div className="data-form">
+      <div className="data-wrapper">
+        <div className="go-back-div">
+          <a href="/login" className="go-back">
+            <span>
+              <FcIcons.FcAdvance />
+            </span>{" "}
+            Go Back
+          </a>
+        </div>
+        <div className="image-upload">
+          <div className={classes.root}>
+            <LinearProgress variant="determinate" value={progress} />
           </div>
-          <div className="image-upload">
-            <div className={classes.root}>
-              <LinearProgress variant="determinate" value={progress} />
+          <div className="image-upload-container">
+            <div className="image-upload-wrapper">
+              <input
+                accept="image/*"
+                className="file-upload"
+                id="icon-button-file"
+                type="file"
+                onChange={handleChange}
+              />
+              <label htmlFor="icon-button-file">
+                <IconButton aria-label="upload picture" component="span">
+                  <PhotoCamera />
+                </IconButton>
+              </label>
+              <Button className="btn-upload" onClick={handleUpload}>
+                Upload
+              </Button>
             </div>
-            <div className="image-upload-container">
-              <div className="image-upload-wrapper">
-                <input
-                  accept="image/*"
-                  className="file-upload"
-                  id="icon-button-file"
-                  type="file"
-                  onChange={handleChange}
-                />
-                <label htmlFor="icon-button-file">
-                  <IconButton aria-label="upload picture" component="span">
-                    <PhotoCamera />
-                  </IconButton>
-                </label>
-                <Button className="btn-upload" onClick={handleUpload}>
-                  Upload
-                </Button>
-              </div>
-              <img className="image-uploaded" src={url} />
-            </div>
-          </div>
-          <div>
-            <form
-              className="card-data-form"
-              onSubmit={handleSubmit}
-              name="card-data"
-            >
-              <input type="hidden" name="form-name" value="data" />
-              <label>
-                {" "}
-                Image Title:
-                <input
-                  type="text"
-                  name="title"
-                  value={details.title}
-                  onChange={handleText}
-                />
-              </label>
-              <label>
-                {" "}
-                Image Description:
-                <input
-                  type="text"
-                  name="description"
-                  value={details.description}
-                  onChange={handleText}
-                />
-              </label>
-              <label>
-                {" "}
-                Image Url:
-                <input type="text" name="link" value={details.link} disabled />
-              </label>
-              <label>
-                {" "}
-                Softwares Used:
-                <input
-                  type="text"
-                  name="text"
-                  value={details.text}
-                  onChange={handleText}
-                />
-              </label>
-              <label>
-                {" "}
-                New Post?:
-                <input
-                  type="checkbox"
-                  name="isNew"
-                  value="true"
-                  onChange={handleText}
-                  checked={details.isNew}
-                />
-              </label>
-              <label>
-                {" "}
-                Featured?:
-                <input
-                  type="checkbox"
-                  name="featured"
-                  value="true"
-                  onChange={handleText}
-                  checked={details.featured}
-                />
-              </label>
-              <label>
-                {" "}
-                Publish on Banner?:
-                <input
-                  type="checkbox"
-                  name="isBanner"
-                  value="true"
-                  onChange={handleText}
-                  checked={details.isBanner}
-                />
-              </label>
-              <label>
-                <InputTag setDetails={setDetails} details={details} />
-              </label>
-              <br />
-              <button type="submit">Submit</button>
-              <button type="button" onClick={handleLogout}>
-                Logout
-              </button>
-            </form>
-            <Snackbar
-              anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-              open={submit.sub}
-              autoHideDuration={6000}
-              onClose={handleClose}
-            >
-              <Alert onClose={handleClose} severity="success">
-                {submit.message}
-              </Alert>
-            </Snackbar>
-            <Snackbar
-              anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-              open={error.err}
-              autoHideDuration={6000}
-              onClose={handleClose}
-            >
-              <Alert onClose={handleClose} severity="error">
-                {error.message}
-              </Alert>
-            </Snackbar>
+            <img className="image-uploaded" src={url} />
           </div>
         </div>
+        <div>
+          <form
+            className="card-data-form"
+            onSubmit={handleSubmit}
+            name="card-data"
+          >
+            <input type="hidden" name="form-name" value="data" />
+            <label>
+              {" "}
+              Image Title:
+              <input
+                type="text"
+                name="title"
+                value={details.title}
+                onChange={handleText}
+              />
+            </label>
+            <label>
+              {" "}
+              Image Description:
+              <input
+                type="text"
+                name="description"
+                value={details.description}
+                onChange={handleText}
+              />
+            </label>
+            <label>
+              {" "}
+              Image Url:
+              <input type="text" name="link" value={details.link} disabled />
+            </label>
+            <label>
+              {" "}
+              Softwares Used:
+              <input
+                type="text"
+                name="text"
+                value={details.text}
+                onChange={handleText}
+              />
+            </label>
+            <label>
+              {" "}
+              New Post?:
+              <input
+                type="checkbox"
+                name="isNew"
+                value="true"
+                onChange={handleText}
+                checked={details.isNew}
+              />
+            </label>
+            <label>
+              {" "}
+              Featured?:
+              <input
+                type="checkbox"
+                name="featured"
+                value="true"
+                onChange={handleText}
+                checked={details.featured}
+              />
+            </label>
+            <label>
+              {" "}
+              Publish on Banner?:
+              <input
+                type="checkbox"
+                name="isBanner"
+                value="true"
+                onChange={handleText}
+                checked={details.isBanner}
+              />
+            </label>
+            <label>
+              <InputTag setDetails={setDetails} details={details} />
+            </label>
+            <br />
+            <button type="submit">Submit</button>
+            <button type="button" onClick={handleLogout}>
+              Logout
+            </button>
+          </form>
+          <Snackbar
+            anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+            open={submit.sub}
+            autoHideDuration={6000}
+            onClose={handleClose}
+          >
+            <Alert onClose={handleClose} severity="success">
+              {submit.message}
+            </Alert>
+          </Snackbar>
+          <Snackbar
+            anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+            open={error.err}
+            autoHideDuration={6000}
+            onClose={handleClose}
+          >
+            <Alert onClose={handleClose} severity="error">
+              {error.message}
+            </Alert>
+          </Snackbar>
+        </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default ImageUpload;

@@ -13,158 +13,163 @@ $black: #8ad4ff;
   transition: $property $duration $ease;
 }
 
-.card__container {
+.indcard-container {
   padding-top: 50px !important;
   padding: 20px;
+  .indcard-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    h1 {
+      color: white !important;
+    }
+  }
+}
+
+.indcard-image-card {
+  width: 50%;
+  overflow: hidden;
+  object-fit: cover;
+  border-radius: 10px;
+  background-color: #111111;
+  .indcard-image {
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    justify-content: center;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.indcard-info {
+  padding: 20px;
+}
+
+.indcard-heading {
   display: flex;
-  gap: 20px;
   flex-direction: row;
-  justify-content: left;
+  justify-content: space-between;
 }
 
-.card__body {
-  img {
-    width: 100%;
-    border-radius: 5px;
-  }
-}
-.card_info {
-  border-left: 2px solid white;
+.indcard-softwares {
   display: flex;
-  height: auto;
-  width: 100%;
-  background: #141414;
-  border-bottom-right-radius: 15px;
-  border-top-right-radius: 15px;
-  flex-wrap: wrap;
-  flex-direction: column;
-  text-align: center;
-  .card_title {
-    margin-top: 20px;
-  }
-  h1 {
-    margin-left: 10px;
-    font-size: 8vh;
-    font-family: "Jost";
-    color: white;
-
-    border-bottom: 2px solid white;
-  }
-  p {
-    margin-left: 10px;
-    color: wheat;
-  }
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 20px;
 }
 
-.card_softwares,
-.check-other {
+.softwares-used {
+  border-radius: 5px;
   h1 {
-    font-size: 7vh !important;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .card__container {
+    background-color: #000;
     padding: 10px;
-    flex-wrap: wrap;
+    border-radius: 5px;
+    font-size: 14px;
   }
+}
 
-  .check-other {
-    .check-container {
-      width: 100%;
+.indcard-description {
+  color: rgb(211, 211, 211);
+}
+
+.indcard-side {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px 20px;
+  .indcard-comment-container,
+  .indcard-explore-container {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #111111;
+  }
+}
+
+.indcard-top-comments {
+  display: flex;
+  flex-direction: column;
+  gap: 20px 20px;
+}
+
+.indcard-commentbox {
+  background-color: #252525;
+  padding: 20px 20px 10px 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  width: 99%;
+  .indcard-comment-text {
+    .indcard-comment-name {
+      h1 {
+        font-size: 20px;
+      }
+    }
+    .indcard-comment {
+      p {
+        color: rgb(109, 109, 109);
+      }
     }
   }
 }
 
-.learn-more {
-  position: relative;
+.indcard-enter-comment {
   display: inline-block;
-  cursor: pointer;
-  outline: none;
-  border: 0;
-  vertical-align: middle;
-  text-decoration: none;
-  background: transparent;
-  padding: 0;
-  font-size: inherit;
-  font-family: inherit;
-
-  &.learn-more {
-    width: 12rem;
-    height: auto;
-    .circle {
-      @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
-      position: relative;
-      display: block;
-      margin: 0;
-      width: 2rem;
-      height: 2rem;
-      background: $black;
-      border-radius: 1.625rem;
-      .icon {
-        @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        margin: auto;
-        background: $white;
-        &.arrow {
-          @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
-          left: 0.417rem;
-          width: 0.75rem;
-          height: 0.125rem;
-          background: none;
-
-          &::before {
-            position: absolute;
-            content: "";
-            top: -0.25rem;
-            right: 0.0625rem;
-            width: 0.625rem;
-            height: 0.625rem;
-            border-top: 0.125rem solid rgb(0, 0, 0);
-            border-right: 0.125rem solid rgb(0, 0, 0);
-            transform: rotate(45deg);
-          }
-        }
-      }
-    }
-    .button-text {
-      @include transition(all, 0.45s, cubic-bezier(0.65, 0, 0.076, 1));
-      position: absolute;
-      top: -8px;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 0.75rem 0;
-      margin: 0 0 0 1.85rem;
-      color: $black;
-      font-weight: 700;
-      line-height: 1.6;
-      text-align: center;
-      text-transform: uppercase;
-      opacity: 0.5;
+  position: relative;
+  height: 150px;
+  textarea {
+    border: none;
+    color: #fff;
+    height: 100%;
+    resize: none !important;
+    width: 100%;
+    &:focus {
+      outline: none !important;
     }
   }
-  &:hover {
-    .circle {
-      width: 100%;
-      .icon {
-        &.arrow {
-          background: $white;
-          transform: translate(1rem, 0);
-        }
-      }
-    }
-    .button-text {
-      color: $white;
-      opacity: 1;
-    }
+  .indcard-comment-submit {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    bottom: 10px;
+    right: 10px;
   }
 }
 
+.indcard-comment-window {
+  display: flex;
+  flex-direction: column;
+  gap: 20px 20px;
+  max-height: 224px;
+  width: 100%;
+  overflow-y: auto;
+}
+.indcard-comment-window::-webkit-scrollbar,
+.indcard-image::-webkit-scrollbar {
+  width: 10px;
+}
+
+.indcard-comment-window::-webkit-scrollbar-track,
+.indcard-image::-webkit-scrollbar-track {
+  background-color: #111111;
+  border-radius: 5px;
+}
+
+.indcard-comment-window::-webkit-scrollbar-thumb,
+.indcard-image::-webkit-scrollbar-thumb {
+  background-color: #3d3d3d;
+  opacity: 0.5;
+  border-radius: 5px;
+}
+
+.indcard-image::-webkit-scrollbar-corner {
+  background-color: #111111;
+}
 .check-other {
-  margin-top: 30px;
 }
 .check-container {
   margin-top: 10px;
@@ -178,7 +183,6 @@ $black: #8ad4ff;
 }
 
 .check-wrapper {
-  margin-bottom: 50px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -191,41 +195,24 @@ $black: #8ad4ff;
   }
 }
 
-.card__body {
-  width: 100%;
-
-  .slide-container {
-    width: auto;
-    height: auto;
-    img {
-      object-fit: cover;
+@media screen and (max-width: 700px) {
+  .indcard-container {
+    .indcard-wrapper {
+      flex-direction: column;
+      gap: 20px;
     }
   }
-}
 
-._14Fp5 {
-  gap: 10px;
-}
-
-._29p_Y {
-  display: none !important;
-}
-
-.carousel {
-  border-radius: 10px;
-  width: 100%;
-  height: 50% !important;
-
-  li {
-    img {
-      object-fit: cover !important;
-    }
+  .indcard-image-card,
+  .indcard-side {
+    width: 100%;
   }
-  button {
-    margin-bottom: 10px;
-  }
-}
 
-.dark {
-  color: #141414 !important;
+  .indcard-comment-window {
+    max-height: 297px;
+  }
+
+  .check-container {
+    width: 100%;
+  }
 }

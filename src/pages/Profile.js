@@ -3,10 +3,18 @@ import { Redirect } from "react-router-dom";
 import ImageUpload from "../components/ImageUpload";
 import "./styles/profile.scss";
 import { ProfileBackground } from "../shared/data";
+import { LinearProgress, Snackbar, Button } from "@material-ui/core";
+import MuiAlert from "@material-ui/lab/Alert";
+import Avatar from "@mui/material/Avatar";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 function Profile({ user, handleLogout, auth }) {
   const [upload, setUpload] = useState(false);
   const [profileBanner, setProfileBanner] = useState("");
+  const [error, setError] = useState({ err: false, message: "" });
 
   useEffect(() => {
     function setBg() {
@@ -16,6 +24,22 @@ function Profile({ user, handleLogout, auth }) {
     }
     setBg();
   });
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      setError({ err: false });
+    }
+
+    setError({ err: false });
+  };
+
+  const handleUpload = (e) => {
+    if (user.email !== "s4samyak@gmail.com") {
+      setError({ err: true, message: "Only Admins Can Upload at the moment" });
+    } else {
+      setUpload(true);
+    }
+  };
 
   if (upload) {
     return (
@@ -32,7 +56,13 @@ function Profile({ user, handleLogout, auth }) {
 
         <div className="profile-page-container">
           <div className="user-id">
-            <img className="user-image" src={user.photoURL} />
+            <div className="user-image">
+              <Avatar
+                alt={user.displayName}
+                src={user.photoURL}
+                sx={{ width: 100, height: 100 }}
+              />
+            </div>
             <h1 className="user-name">{user.displayName}</h1>
             <div className="profile-buttons">
               <div className="button-wrapper2">
@@ -48,7 +78,7 @@ function Profile({ user, handleLogout, auth }) {
                       top: 0,
                       behavior: "smooth",
                     });
-                    setUpload(true);
+                    handleUpload();
                   }}
                 >
                   Upload
@@ -56,6 +86,16 @@ function Profile({ user, handleLogout, auth }) {
               </div>
             </div>
           </div>
+          <Snackbar
+            anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+            open={error.err}
+            autoHideDuration={6000}
+            onClose={handleClose}
+          >
+            <Alert onClose={handleClose} severity="error">
+              {error.message}
+            </Alert>
+          </Snackbar>
         </div>
       </div>
     );

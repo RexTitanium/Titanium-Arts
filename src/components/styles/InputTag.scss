@@ -55,6 +55,12 @@
 .input-tag__tags li.input-tag__tags__input {
   background: #000000;
   border-radius: 5px;
-  flex-grow: 1;
+
   padding: 0;
+}
+
+@media screen and (max-width: 700px) {
+  .input-tag__tags {
+    width: 60%;
+  }
 }

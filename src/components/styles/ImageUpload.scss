@@ -11,10 +11,6 @@
     background: #141414;
   }
   .image-upload-container {
-    height: 500px;
-    width: 400px;
-    position: absolute;
-    right: 400px;
     overflow: hidden;
     padding: 20px;
 
@@ -23,7 +19,7 @@
       position: absolute;
       border-radius: 10px;
       border: none;
-      max-height: 80%;
+      max-height: 60%;
     }
 
     .image-upload-wrapper {
@@ -31,7 +27,7 @@
       flex-direction: row;
       flex-wrap: nowrap;
       align-items: center;
-
+      justify-content: flex-end;
       .MuiButtonBase-root {
         color: white !important;
       }
@@ -95,4 +91,47 @@
 
 .file-upload {
   display: none;
+}
+
+@media screen and (max-width: 700px) {
+  .go-back-div {
+    padding: 10px 0px 20px 0px;
+  }
+
+  .data-form {
+    padding: 50px 20px 20px 20px;
+    .data-wrapper {
+      padding: 20px;
+      overflow: hidden;
+    }
+    .image-upload-container {
+      width: auto;
+      height: auto;
+      position: unset;
+      padding: 0;
+      width: auto;
+      .image-upload-wrapper {
+        justify-content: flex-start;
+      }
+      img {
+        position: unset;
+        width: 100%;
+      }
+    }
+  }
+
+  .card-data-form {
+    flex-direction: column;
+    input[type="text"] {
+      width: max-content;
+    }
+  }
+
+  .input-tag__tags li.input-tag__tags__input {
+    flex-grow: 0;
+  }
+
+  .input-tag input {
+    width: auto;
+  }
 }

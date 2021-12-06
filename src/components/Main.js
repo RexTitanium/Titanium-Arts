@@ -23,6 +23,7 @@ function Main({ user, setUser }) {
   const [banner, setBanner] = useState("");
 
   const [dcCards, setCards] = useState(null);
+  const [comments, setComments] = useState("");
   const [auth, setAuth] = useState(false);
   //Login
 
@@ -53,6 +54,26 @@ function Main({ user, setUser }) {
       })
       .catch((error) => console.log(error));
   }, []);
+
+  //comments
+
+  useEffect(() => {
+    db.collection("Comments")
+      .get()
+      .then((snapshot) => {
+        const Comments = [];
+        var id = 0;
+        snapshot.forEach((card) => {
+          const data = card.data();
+          Comments.push({ ...data, id: id });
+          id = id + 1;
+        });
+        setComments(Comments);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  //-----------------------------------------------------------
   const HomePage = () => {
     return (
       <motion.div
@@ -87,6 +108,8 @@ function Main({ user, setUser }) {
             (card) => card.id !== parseInt(match.params.cardId, 10)
           )
         }
+        user={user}
+        comments={comments}
       />
     );
   };
@@ -170,7 +193,11 @@ function Main({ user, setUser }) {
             <Route exact path="/work" component={() => <WorkPage />} />
             <Route exact path="/aboutus" component={() => <AboutPage />} />
             <Route exact path="/contactus" component={() => <ContactPage />} />
-            <Route exact path="/temptesting" component={() => <Temp />} />
+            <Route
+              exact
+              path="/temptesting"
+              component={() => <Temp user={user} />}
+            />
             <Route
               exact
               path="/profile"

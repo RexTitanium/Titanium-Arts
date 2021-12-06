@@ -7,7 +7,7 @@
 .login-wrapper {
   background-color: #141414;
   border-radius: 10px;
-  height: 450px;
+  height: 100%;
   overflow: hidden;
   text-align: left;
   display: flex;
@@ -41,7 +41,6 @@
 
 .empty-block {
   width: 40%;
-  height: 100%;
   background-image: url("./abstract_bg_design.jpg");
   background-size: cover;
   box-shadow: -6px 0px 5px rgb(14, 14, 14);
@@ -66,6 +65,7 @@
     margin-left: 10px;
     color: rgb(170, 170, 255);
     transition: all 300ms ease;
+    cursor: pointer;
     &:hover {
       color: wheat;
       transition: all 300ms ease;
@@ -190,5 +190,34 @@ input:focus ~ .highlight1 {
   to {
     width: 0;
     background: transparent;
+  }
+}
+
+.button-group-signup {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.image-upload-wrapper {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  span {
+    color: #fff;
+  }
+  button {
+    color: #fff;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .login-form {
+    padding: 50px 20px 20px 20px;
+  }
+  .login-content {
+    flex-direction: column;
+  }
+  .button-group-signup {
+    flex-direction: column;
   }
 }
